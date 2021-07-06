@@ -43,7 +43,7 @@ Kafka Architecture
 - Apache Zookeeper is distributed, open-source configuration, synchronization service.
     - Its configuration management system.
     - Which messages consumer has read.
-    - cluster information.
+    - Cluster information.
     - Topic configuration.
 
 Install Kafka and Zookeeper
@@ -51,3 +51,42 @@ Install Kafka and Zookeeper
 
 - Download the software [click here...](https://kafka.apache.org/quickstart)
 -
+
+Kafka Topic
+===========
+
+- Topic is the Kafka component where Producers are connected.
+- Producer publish message in Kafka Topic.
+- Topics can be considered as a logical entitiy.
+- In Kafka cluster each topic is present in every cluster node.
+
+Kafka Topic Partition
+=====================
+
+- A kafka topic id divided into multiple parts that is called as partition.
+- Partitions can ve considered as the linear data structure. Just like array.
+- Messages are actually published to a partition in the topic.
+- Every partition has a partition number
+- Each partition has increasing index called offset.
+- New messages are always pushed at the read end.
+- Data is immutable after publish
+- In multi broker Kafka Cluster Partitions for a topic are distributed across the whole cluster.
+
+Kafka Producers in Python
+=========================
+
+- Producers publish message to the topics of their choice.
+- In reality messages are published to topic partition.
+- Configuration is needed by Producer.
+    - bootstrap_server
+    - topic
+    - value_serializer
+    - Over the wire means on the network
+    - send method is called on producer to publish the data.
+    - modules need to user `kafka-python` and `Faker`(to test).
+
+Example: Single Broker - 1 Partition
+************************************
+
+- All the message will be published to as single partition.
+
